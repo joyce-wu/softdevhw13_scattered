@@ -14,8 +14,8 @@ var data = {5.18200016021729: 0.982409417629242, 6.00799989700317: 1.00082039833
 
 var create_xAxis = function() {
     var x_axis = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    x_axis.setAttribute("x1", width/2 - 500); 
-    x_axis.setAttribute("x2", width/2 + 500);
+    x_axis.setAttribute("x1", width/2 - 400); 
+    x_axis.setAttribute("x2", width/2 + 400);
     x_axis.setAttribute("y1", height/2);
     x_axis.setAttribute("y2", height/2);
     x_axis.setAttribute("stroke-width", 3);
@@ -25,8 +25,8 @@ var create_xAxis = function() {
 
 var create_yAxis = function() {
     var y_axis = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    y_axis.setAttribute("x1", width/2 - 500); 
-    y_axis.setAttribute("x2", width/2 - 500);
+    y_axis.setAttribute("x1", width/2 - 400); 
+    y_axis.setAttribute("x2", width/2 - 400);
     y_axis.setAttribute("y1", height/2 - 500);
     y_axis.setAttribute("y2", height/2);
     y_axis.setAttribute("stroke-width", 3);
@@ -41,8 +41,8 @@ var plotData = function() {
     var length = Object.keys(data).length;
     
     for (var key in data) {
-	xCoordinates.push(key);
-	yCoordinates.push(data[key]);
+	yCoordinates.push(key);
+	xCoordinates.push(data[key]);
     }
 
     
@@ -66,17 +66,22 @@ var plotData = function() {
     circles.data(xCoordinates);
     circles.attr("cx",
 		 function(d) {
-		     return (width/2-500) + (d * 110) });
+		     return (width/2-400) + (d * 350) });
     
     circles.data(yCoordinates);
     circles.attr("cy",
 		 function(d) {
-		     return (height/2 - 500) + (d * 250) });
+		     return (height/2-1200) + (d * 150) });
 	
 
 }
 	
-	
+var create_labels = function() {
+    var xLabel = "GDP";
+    var yLabel = "Happiness"
+
+    
+}
 
 create_xAxis(); 
 create_yAxis();
