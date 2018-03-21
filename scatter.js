@@ -28,7 +28,7 @@ var create_yAxis = function() {
     y_axis.setAttribute("x1", width/2 - 500); 
     y_axis.setAttribute("x2", width/2 - 500);
     y_axis.setAttribute("y1", height/2 - 500);
-    y_axis.setAttribute("y2", height/2 + 500);
+    y_axis.setAttribute("y2", height/2);
     y_axis.setAttribute("stroke-width", 3);
     y_axis.setAttribute("stroke", "black");
     svg.appendChild(y_axis);
@@ -45,12 +45,14 @@ var plotData = function() {
 	yCoordinates.push(data[key]);
     }
 
-    /*
+    
     for (i = 0; i < length; i++) {
+	console.log("x"); 
 	console.log(xCoordinates[i]);
+	console.log("y"); 
 	console.log(yCoordinates[i]);
     }
-    */
+    
 
     for (i = 0; i < length; i++) {
 	var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -61,12 +63,16 @@ var plotData = function() {
     }
 
     var circles = d3.selectAll("circle");
-    circles
-	.data(xCoordinates)
-	.attr("cx", function(d){return (width / count) * (d + 1)});
-    circles
-	.data(yCoordinates)
-	.attr("cy", function(d){return (height / count) * (count - d)});
+    circles.data(xCoordinates);
+    circles.attr("cx",
+		 function(d) {
+		     return (width/2-500) + (d * 110) });
+    
+    circles.data(yCoordinates);
+    circles.attr("cy",
+		 function(d) {
+		     return (height/2 - 500) + (d * 250) });
+	
 
 }
 	
