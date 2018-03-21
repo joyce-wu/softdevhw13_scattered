@@ -78,13 +78,53 @@ var plotData = function() {
 	
 var create_labels = function() {
     var xLabel = "GDP";
-    var yLabel = "Happiness"
+    var yLabel = "Happiness";
+
+    var xLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    xLabel.setAttribute("x", width/2);
+    xLabel.setAttribute("y", height/2+25);
+    xLabel.setAttribute("fill", "black");
+    xLabel.textContent = "G D P";
+    
+    var yLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    yLabel.setAttribute("x", width-(width-15));
+    yLabel.setAttribute("y", height/2-250);
+    yLabel.setAttribute("fill", "black");
+    yLabel.textContent = "Happiness";
 
     
+    svg.appendChild(xLabel);
+    svg.appendChild(yLabel);
+
+
+    var zero = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    zero.setAttribute("x", 100);
+    zero.setAttribute("y", height/2+15);
+    zero.setAttribute("fill", "black");
+    zero.textContent = "0";
+
+    
+    var two = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    two.setAttribute("x", width-110);
+    two.setAttribute("y", height/2+15);
+    two.setAttribute("fill", "black");
+    two.textContent = "2";
+
+    var eight = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    eight.setAttribute("x", 85);
+    eight.setAttribute("y", height/2-485);
+    eight.setAttribute("fill", "black");
+    eight.textContent = "8";
+    
+    svg.appendChild(zero);
+    svg.appendChild(two);
+    svg.appendChild(eight);
 }
+
 
 create_xAxis(); 
 create_yAxis();
-plotData(); 
+plotData();
+create_labels();
     
     
