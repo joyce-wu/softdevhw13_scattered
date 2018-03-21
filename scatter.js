@@ -71,6 +71,7 @@ var plotData = function() {
     }
 
     //Setting the x and y coordinates of all circles
+    //Note: multiplying d by a certain factor to make the points more spread out (they're all really small decimal numbers) 
     var circles = d3.selectAll("circle");
     circles.data(xCoordinates);
     circles.attr("cx",
